@@ -9,6 +9,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+#### Github URL - https://github.com/Nikhil12121/514-Project-Group-5
+
+
 ## Section 1 - Visualizing the data
 
 Importing the standard libraries and packages:
@@ -265,21 +268,24 @@ plot(forwardModel)
 
 ### Model 2: Backward Model Propogation
 
-#### 4.8
+#### 4.8 To construct and define the backward model
+
 ```{r}
 backward_model = stepAIC(all_model ,direction = "backward")
 summary(backward_model)
 backward_model$anova
 ```
 
-#### 4.9
+#### 4.9 To calculate MAE and MSE for backward model
+
 ```{r}
 backward_pred <-predict(object = backward_model, newdata = CellPhone_Testing[,1:14])
 MAE(y_pred = backward_pred, y_true = CellPhone_Testing$Price)
 RMSE(y_pred = backward_pred ,y_true = CellPhone_Testing$Price)
 ```
 
-#### 4.10
+#### 4.10 Plotting the backward model 
+
 ```{r}
 par(mfrow = c(2,2))
 plot(backward_model)
